@@ -8,6 +8,7 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 import {News} from "./components/news/News";
 import Site from "./components/site/Site";
 import Page from "./components/page/Page";
+import Stallen from "./components/stallen/Stallen";
 
 const App = () => {
     return (
@@ -26,7 +27,7 @@ const App = () => {
                         <Route path="/nyheter" component={News} />
                         <Route path="/kamper" component={News} />
                         <Route path="/sesong" component={News} />
-                        <Route path="/stallen" component={News} />
+                        <Route path="/stallen" component={Stallen} />
                     </GridLayout>
                 </GridLayout>
             </Page>
