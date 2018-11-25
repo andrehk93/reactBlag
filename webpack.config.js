@@ -1,17 +1,17 @@
 const path = require('path'),
-    webpack = require('webpack'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+    webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: {
-        app: ['./src/app/App.tsx', 'webpack-hot-middleware/client'],
+        app: './src/index.jsx',
         vendor: ['react', 'react-dom']
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].bundle.js'
     },
-    devtool: 'source-map',
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
     },
@@ -19,13 +19,41 @@ module.exports = {
         rules: [
             {
                 test: /\.(ts|tsx)$/,
+                exclude: /node_modules/,
                 loader: 'ts-loader'
             },
-            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            includePaths: ["./src/sass/application.scss"]
+                        }
+                    }
+                ],
+            }
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'src', 'app', 'index.html') }),
-        new webpack.HotModuleReplacementPlugin()
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            filename: './index.html'
+        }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: "[name].css",
+            chunkFilename: "[id].css"
+        })
     ]
-}
+};
