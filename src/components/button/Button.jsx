@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from "../../utils/ClassNames";
+import Button from "@material-ui/core/Button/Button";
 
-export class Button extends React.Component {
+export class BlagButton extends React.Component {
 
     constructor(props) {
         super(props);
@@ -21,11 +22,11 @@ export class Button extends React.Component {
 
     render() {
         const {composition, children} = this.props;
-        const classes = classNames([Button.ClassNames.root, Button.ClassNames.composition(composition)]);
+        const classes = classNames([BlagButton.ClassNames.root, BlagButton.ClassNames.composition(composition)]);
         return (
-            <button className={classes} onClick={this.onClick}>
+            <Button className={classes} onClick={this.onClick}>
                 {children}
-            </button>
+            </Button>
         );
     }
 }

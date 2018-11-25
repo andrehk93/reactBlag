@@ -1,0 +1,24 @@
+$bp-l: 70em;
+$bp-m-l: 64em;
+$bp-m: 50em;
+$bp-m-s: 37.5em;
+$bp-s: 37.5em;
+
+@mixin breakpoint($view) {
+  @if $view == $bp-l {
+    @media (min-width: 70em) { @content ; }
+  }
+  @else if $view == $bp-m-l {
+    @media (min-width: 64em) { @content ; }
+  }
+  @else if $view == $bp-m {
+    @media (min-width: 50em) { @content ; }
+  }
+  @else if $view == $bp-m-s {
+    @media (min-width: 37.5em)  { @content ; }
+  }
+  @else if $view == $bp-s {
+    @media (max-width: 37.5em)  { @content ; }
+
+  }
+}

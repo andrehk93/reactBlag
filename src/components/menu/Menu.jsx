@@ -16,6 +16,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import classNames from "../../utils/ClassNames";
+import Link from "react-router-dom/es/Link";
 
 const styles = theme => ({
     root: {
@@ -23,6 +25,7 @@ const styles = theme => ({
     },
     grow: {
         flexGrow: 1,
+        display: "flex",
     },
     menuButton: {
         marginLeft: -12,
@@ -33,30 +36,6 @@ const styles = theme => ({
         [theme.breakpoints.up('sm')]: {
             display: 'block',
         },
-    },
-    search: {
-        position: 'relative',
-        borderRadius: theme.shape.borderRadius,
-        backgroundColor: fade(theme.palette.common.white, 0.15),
-        '&:hover': {
-            backgroundColor: fade(theme.palette.common.white, 0.25),
-        },
-        marginRight: theme.spacing.unit * 2,
-        marginLeft: 0,
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing.unit * 3,
-            width: 'auto',
-        },
-    },
-    searchIcon: {
-        width: theme.spacing.unit * 9,
-        height: '100%',
-        position: 'absolute',
-        pointerEvents: 'none',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     inputRoot: {
         color: 'inherit',
@@ -85,6 +64,10 @@ const styles = theme => ({
             display: 'none',
         },
     },
+    navLink: {
+        fontFamily: "roboto",
+        fontWeight: 600,
+    }
 });
 
 class PrimarySearchAppBar extends React.Component {
@@ -116,6 +99,98 @@ class PrimarySearchAppBar extends React.Component {
         const isMenuOpen = Boolean(anchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+        const renderMobileAppBar = (
+            <Toolbar className={classes.sectionMobile}>
+                <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+                    <MenuIcon />
+                </IconButton>
+                <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                    NTNUi B-laget
+                </Typography>
+                <div className={classes.grow} />
+                <div className={classes.sectionDesktop}>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="secondary">
+                            <MailIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={17} color="secondary">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton
+                        aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                        aria-haspopup="true"
+                        onClick={this.handleProfileMenuOpen}
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                </div>
+                <div className={classes.sectionMobile}>
+                    <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                        <MoreIcon />
+                    </IconButton>
+                </div>
+            </Toolbar>
+        );
+
+        const renderAppBar = (
+            <Toolbar className={classes.sectionDesktop}>
+                <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                    NTNUi B-laget
+                </Typography>
+                <div className={classes.grow}>
+                    <nav className={classes.navLink}>
+                        <Link to="/nyheter">
+                            Nyheter
+                        </Link>
+                    </nav>
+                    <nav className={classes.navLink}>
+                        <Link to="/kamper">
+                            Kamper
+                        </Link>
+                    </nav>
+                    <nav className={classes.navLink}>
+                        <Link to="/sesong">
+                            Sesong
+                        </Link>
+                    </nav>
+                    <nav className={classes.navLink}>
+                        <Link to="/stallen">
+                            Stallen
+                        </Link>
+                    </nav>
+                </div>
+                <div className={classes.sectionDesktop}>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="secondary">
+                            <MailIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={17} color="secondary">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton
+                        aria-owns={isMenuOpen ? 'material-appbar' : undefined}
+                        aria-haspopup="true"
+                        onClick={this.handleProfileMenuOpen}
+                        color="inherit"
+                    >
+                        <AccountCircle />
+                    </IconButton>
+                </div>
+                <div className={classes.sectionMobile}>
+                    <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+                        <MoreIcon />
+                    </IconButton>
+                </div>
+            </Toolbar>
+        );
+
         const renderMenu = (
             <Menu
                 anchorEl={anchorEl}
@@ -139,14 +214,6 @@ class PrimarySearchAppBar extends React.Component {
             >
                 <MenuItem>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <MailIcon />
-                        </Badge>
-                    </IconButton>
-                    <p>Messages</p>
-                </MenuItem>
-                <MenuItem>
-                    <IconButton color="inherit">
                         <Badge badgeContent={11} color="secondary">
                             <NotificationsIcon />
                         </Badge>
@@ -163,54 +230,10 @@ class PrimarySearchAppBar extends React.Component {
         );
 
         return (
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                            Material-UI
-                        </Typography>
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                            />
-                        </div>
-                        <div className={classes.grow} />
-                        <div className={classes.sectionDesktop}>
-                            <IconButton color="inherit">
-                                <Badge badgeContent={4} color="secondary">
-                                    <MailIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton color="inherit">
-                                <Badge badgeContent={17} color="secondary">
-                                    <NotificationsIcon />
-                                </Badge>
-                            </IconButton>
-                            <IconButton
-                                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                                aria-haspopup="true"
-                                onClick={this.handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
-                        </div>
-                        <div className={classes.sectionMobile}>
-                            <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
-                                <MoreIcon />
-                            </IconButton>
-                        </div>
-                    </Toolbar>
+            <div className={classNames([classes.root, "blag-menu"])}>
+                <AppBar position="fixed">
+                    {renderMobileAppBar}
+                    {renderAppBar}
                 </AppBar>
                 {renderMenu}
                 {renderMobileMenu}
