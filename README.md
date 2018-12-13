@@ -42,3 +42,19 @@ A basic setup of this is added at index.jsx in the src-folder. Long story short,
 
 #### SASS
 Just a way of handling some extra styling in addition to Material UI. Entry point is src/_manifest.scss, which tells WebPack exactly which .scss files to load.
+
+## Getting all this to the server
+
+### Command line
+#### Adding path to namespace
+To access the network folder via command line you first have to add the folder namespace to possible namespaces. With Windows Power Shell, this is done by:
+```pushd \\webedit.ntnu.no\groupswww\fotball\blag\reactBlag\```
+Now you are inside the folder (hopefully), but you still aren't there quite yet. It might look like you're in the folder, but you're still where you were when you entered the command.
+Thus, enter ```popd``` to get back to where you were. Now, you can use ```cd \\webedit.ntnu.no\groupswww\fotball\blag\reactBlag\```, and now you're actually inside the folder.
+
+#### Copying dist-folder
+In a lack of a better way to do this, build the WebPack production build (```yarn run build```), and use the scp (safecopy) to where you want the Dist-folder:
+```scp -r dist \\webedit.ntnu.no\groupswww\fotball\blag\reactBlag\```
+-r is the recursive flag, signaling to add everything in the dist folder, including the folder itself.
+
+And then you should be good to go!

@@ -117,6 +117,6 @@ else {
 }
 
 
-return array($keepers, $defenders, $midfielders, $attackers);
+echo json_encode(array($keepers, $defenders, $midfielders, $attackers));
 
 ?>

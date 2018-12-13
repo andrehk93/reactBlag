@@ -16,10 +16,10 @@ class GridLayout extends React.Component {
     };
 
     render() {
-        const {composition, children, alignContent, alignItems, classes, rootComponent, direction, justify, lg, md, sm, item, container, key} = this.props;
+        const {composition, children, classes, key} = this.props;
         const allClasses = classNames([GridLayout.ClassNames.root, GridLayout.ClassNames.composition(composition), classes]);
         return (
-            <Grid key={key} {...this.props} className={allClasses} item={item} container={container} direction={direction} justify={justify} alignContent={alignContent} alignItems={alignItems}>
+            <Grid key={key} {...this.props} className={allClasses}>
                 {children}
             </Grid>
         );
