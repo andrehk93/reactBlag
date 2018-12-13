@@ -12,6 +12,7 @@ export default class Stallen extends React.Component {
     }
 
     componentDidMount() {
+        /*
         fetch("http://www.reddit.com/r/reactjs.json")
             .then(res => res.json())
             .then(
@@ -31,7 +32,16 @@ export default class Stallen extends React.Component {
                     });
                 }
             )
-
+        */
+        fetch("http://org.ntnu.no/fotball/blag/chat/chat.php")
+            .then(
+                (result) => {
+                    console.log("result: ", result);
+                },
+                (error) => {
+                    console.log("Error: ", error);
+                }
+            )
     }
 
     render() {
