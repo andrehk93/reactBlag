@@ -10,34 +10,40 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
     card: {
-        maxWidth: 345,
+        width: 540,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        marginRight: 10,
+        marginBottom: 10
     },
     media: {
         height: 140,
     },
+    text: {
+
+    }
 };
 
 function NewsStory(props) {
-    const { classes } = props;
+    const { classes, children } = props;
     return (
         <Card className={classes.card}>
             <CardActionArea>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
+                        {children[3]}
                     </Typography>
-                    <Typography component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
+                    <Typography component="p" className={classes.text}>
+                        {children[2]}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
                 <Button size="small" color="primary">
-                    Share
+                    Del
                 </Button>
                 <Button size="small" color="primary">
-                    Learn More
+                    Les mer
                 </Button>
             </CardActions>
         </Card>

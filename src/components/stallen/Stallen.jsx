@@ -12,27 +12,6 @@ export default class Stallen extends React.Component {
     }
 
     componentDidMount() {
-        /*
-        fetch("http://www.reddit.com/r/reactjs.json")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        isLoaded: true,
-                        items: result
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    });
-                }
-            )
-        */
         fetch("http://org.ntnu.no/fotball/blag/reactBlag/backend/getPlayers.php")
             .then(res => res.json())
             .then(
