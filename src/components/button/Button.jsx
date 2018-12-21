@@ -1,23 +1,24 @@
 import React from 'react';
 import classNames from "../../utils/ClassNames";
 import Button from "@material-ui/core/Button/Button";
+import PropTypes from 'prop-types';
 
 export class BlagButton extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
+    static displayName = "BlagButton";
 
     static ClassNames = {
         root: "blag-button",
         composition: skin => "blag-button--skin-" + skin,
     };
 
+    constructor(props) {
+        super(props);
+    }
+
     onClick = (__event) => {
         const {onClick} = this.props;
-
         onClick && onClick(__event);
-        console.log("Click!");
     };
 
     render() {
@@ -30,3 +31,7 @@ export class BlagButton extends React.Component {
         );
     }
 }
+
+BlagButton.propTypes = {
+    onClick: PropTypes.object.isRequired
+};

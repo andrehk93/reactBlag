@@ -29,6 +29,8 @@ const App = () => {
     );
 };
 
+App.displayName = "App";
+
 render(
     <BrowserRouter>
         <App />

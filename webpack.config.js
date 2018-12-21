@@ -1,3 +1,4 @@
+/* eslint: disable */
 const path = require('path'),
     webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');

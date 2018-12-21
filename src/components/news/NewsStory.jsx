@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {BlagButton} from "../button/Button";
 
 const styles = {
     card: {
@@ -24,16 +25,26 @@ const styles = {
     }
 };
 
-function NewsStory(props) {
+/*
+Really simple class for rendering NewsStory
+ */
+export const NewsStory = (props) => {
+
     const { classes, children } = props;
     return (
         <Card className={classes.card}>
             <CardActionArea>
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography
+                        gutterBottom variant="h5"
+                        component="h2"
+                    >
                         {children[3]}
                     </Typography>
-                    <Typography component="p" className={classes.text}>
+                    <Typography
+                        component="p"
+                        className={classes.text}
+                    >
                         {children[2]}
                     </Typography>
                 </CardContent>
@@ -42,16 +53,27 @@ function NewsStory(props) {
                 <Button size="small" color="primary">
                     Del
                 </Button>
-                <Button size="small" color="primary">
+                <BlagButton
+                    size="small"
+                    color="primary"
+                    onClick={() => {}}
+                >
                     Les mer
-                </Button>
+                </BlagButton>
             </CardActions>
         </Card>
     );
-}
+};
 
+/*
+These are important for ease-of-use in other components
+ */
 NewsStory.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+NewsStory.displayName = "NewsStory";
 
+/*
+MaterialUI Export:
+ */
 export default withStyles(styles)(NewsStory);
