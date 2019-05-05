@@ -1,3 +1,3 @@
 export default function classNames(names) {
-    return names.join(" ");
+    return names.join(" ").trim();
 };

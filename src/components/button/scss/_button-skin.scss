@@ -1,0 +1,19 @@
+button {
+    &.button--skin-primary {
+        background: $color-primary;
+        border: 0;
+        color: $color-tertiary-dark;
+    }
+
+    &.button--skin-secondary {
+        background: $color-secondary;
+        border: 0;
+        color: $color-tertiary-dark;
+    }
+
+    &.button--skin-tertiary {
+        background: transparent;
+        @include border("around", 1px, solid, $color-tertiary-dark);
+        color: $color-tertiary;
+    }
+}

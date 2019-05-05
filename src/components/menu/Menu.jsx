@@ -85,6 +85,15 @@ class PrimarySearchAppBar extends React.Component {
         this.handleMobileMenuClose();
     };
 
+    handleMobileMainMenuOpen = event => {
+        this.setState({ mobileMenuAnchorEl: event.currentTarget })
+    };
+
+    handleMobileMainMenuClose = () => {
+        this.setState({ mobileMenuAnchorEl: null });
+        this.handleMobileMenuClose();
+    };
+
     handleMobileMenuOpen = event => {
         this.setState({ mobileMoreAnchorEl: event.currentTarget });
     };
@@ -94,14 +103,15 @@ class PrimarySearchAppBar extends React.Component {
     };
 
     render() {
-        const { anchorEl, mobileMoreAnchorEl } = this.state;
+        const { anchorEl, mobileMoreAnchorEl, mobileMenuAnchorEl } = this.state;
         const { classes } = this.props;
         const isMenuOpen = Boolean(anchorEl);
+        const isMobileMainMenuOpen = Boolean(mobileMenuAnchorEl);
         const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
         const renderMobileAppBar = (
             <Toolbar className={classes.sectionMobile}>
-                <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+                <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer" onClick={this.handleMobileMainMenuOpen}>
                     <MenuIcon />
                 </IconButton>
                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
@@ -204,6 +214,45 @@ class PrimarySearchAppBar extends React.Component {
             </Menu>
         );
 
+        const renderMobileMainMenu = (
+            <Menu
+                anchorEl={mobileMenuAnchorEl}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                open={isMobileMainMenuOpen}
+                onClose={this.handleMobileMainMenuClose}
+            >
+                <MenuItem>
+                    <nav className={classes.navLink}>
+                        <Link to="/nyheter">
+                            Nyheter
+                        </Link>
+                    </nav>
+                </MenuItem>
+                <MenuItem>
+                    <nav className={classes.navLink}>
+                        <Link to="/kamper">
+                            Kamper
+                        </Link>
+                    </nav>
+                </MenuItem>
+                <MenuItem>
+                    <nav className={classes.navLink}>
+                        <Link to="/sesong">
+                            Sesong
+                        </Link>
+                    </nav>
+                </MenuItem>
+                <MenuItem>
+                    <nav className={classes.navLink}>
+                        <Link to="/stallen">
+                            Stallen
+                        </Link>
+                    </nav>
+                </MenuItem>
+            </Menu>
+        )
+
         const renderMobileMenu = (
             <Menu
                 anchorEl={mobileMoreAnchorEl}
@@ -236,6 +285,7 @@ class PrimarySearchAppBar extends React.Component {
                     {renderAppBar}
                 </AppBar>
                 {renderMenu}
+                {renderMobileMainMenu}
                 {renderMobileMenu}
             </div>
         );

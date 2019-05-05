@@ -1,0 +1,39 @@
+div.card {
+    width: 100%;
+    color: $color-tertiary;
+
+    &[class*="card-skin--"] {
+        @include padding("around", $blag-padding--medium);
+
+        @include breakpoint($bp-bleed) {
+            position: relative;
+            z-index: 0;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: auto;
+                left: 50%;
+                width: 102vw;
+                background-color: inherit;
+                transform: translate(-50%);
+                z-index: -1;
+            }
+        }
+
+        &.card-skin--primary {
+            background: $color-primary-light;
+            color: $color-tertiary-dark;
+        }
+        &.card-skin--secondary {
+            background: $color-secondary-light;
+            color: $color-tertiary-dark;
+        }
+        &.card-skin--tertiary {
+            background: $color-tertiary-light;
+            color: $color-tertiary-dark;
+        }
+    }
+}

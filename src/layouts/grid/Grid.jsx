@@ -1,35 +1,40 @@
 import React from 'react';
 import classNames from "../../utils/ClassNames";
-import Grid from "@material-ui/core/Grid/Grid";
 import * as PropTypes from "prop-types";
 
-
-class GridLayout extends React.Component {
+class Grid extends React.Component {
 
     constructor(props) {
         super(props);
     }
 
+    static Composition = {
+        DEFAULT: '',
+        TWO: 'two-columns',
+        THREE: 'three-columns',
+        FOUR: 'four-columns',
+    };
+
     static ClassNames = {
-        root: "blag-grid",
-        composition: comp => "blag-grid--composition-" + comp,
+        root: "grid",
+        composition: comp => "grid-composition--" + comp,
+    };
+
+    static propTypes = {
+        composition: PropTypes.oneOf(Grid.Composition),
     };
 
     render() {
         const {composition, children, classes, key} = this.props;
-        const allClasses = classNames([GridLayout.ClassNames.root, GridLayout.ClassNames.composition(composition), classes]);
+        const allClasses = classNames(
+            [Grid.ClassNames.root, composition && Grid.ClassNames.composition(composition), classes]
+        );
         return (
-            <Grid key={key} {...this.props} className={allClasses}>
-                {children}
-            </Grid>
+            <div key={ key } className={ allClasses }>
+                { children }
+            </div>
         );
     }
 }
 
-GridLayout.propTypes = {
-    container: PropTypes.bool.isRequired,
-    item: PropTypes.bool.isRequired,
-    direction: PropTypes.string,
-};
-
-export default GridLayout;
+export default Grid;

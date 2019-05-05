@@ -1,0 +1,11 @@
+@mixin padding($padding-direction, $padding-size) {
+  @if ($padding-direction == "around") {
+    padding: $padding-size;
+  } @else if ($padding-direction == "horizontal") {
+    padding: 0 $padding-size 0 $padding-size;
+  } @else if ($padding-direction == "vertical") {
+    padding: $padding-size 0 $padding-size 0;
+  } @else {
+    padding-#{$padding-direction}: $padding-size;
+  }
+}

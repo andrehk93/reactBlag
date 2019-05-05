@@ -7,30 +7,30 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import WorkIcon from '@material-ui/icons/Work';
 import Divider from '@material-ui/core/Divider';
-import {BlagButton} from "../button/Button";
+import { Button } from "../button/Button";
 
-export const BlagModal = (props) => {
+export const BlagModal = ( props ) => {
 
     return (
-        <Modal open={props.open} onEscapeKeyDown={props.onEscapeKeyDown} onBackdropClick={props.onBackdropClick}>
-            <div className={"blag-modal--item"}>
+        <Modal open={ props.open } onEscapeKeyDown={ props.onEscapeKeyDown } onBackdropClick={ props.onBackdropClick }>
+            <div className={ "modal--item" }>
                 <List>
                     <ListItem>
                         <Avatar>
                             <WorkIcon/>
                         </Avatar>
-                        <ListItemText primary={props.title} secondary={new Date().toDateString()}/>
+                        <ListItemText primary={ props.title } secondary={ new Date().toDateString() }/>
                     </ListItem>
                     <li>
                         <Divider variant="inset" />
                     </li>
                     <ListItem>
-                        {props.children}
+                        { props.children }
                     </ListItem>
                     <ListItem>
-                        <BlagButton onClick={props.close}>
-                            {"Avbryt"}
-                        </BlagButton>
+                        <Button onClick={ props.close }>
+                            { "Avbryt" }
+                        </Button>
                     </ListItem>
                 </List>
             </div>

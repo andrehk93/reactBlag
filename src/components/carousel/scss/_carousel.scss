@@ -1,0 +1,40 @@
+div.carousel {
+
+    > .carousel--panel {
+
+    }
+    > .carousel--controls {
+        @include margin("top", $blag-margin--small);
+        display: flex;
+
+        > button {
+            width: 25%;
+            flex-basis: 25%;
+            &:last-child {
+                float: right;
+            }
+        }
+
+        > div {
+            margin: 0 auto;
+            > div.carousel--controls-pagination {
+                width: 50%;
+                flex-basis: 50%;
+                text-align: center;
+                display: flex;
+                > a {
+                    cursor: pointer;
+                    @include margin("horizontal", $blag-margin--small);
+                    @include padding("around", $blag-padding--small);
+
+                    &.active {
+                        background: $color-secondary-light;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+}

@@ -1,0 +1,11 @@
+@mixin margin($margin-direction, $margin-size) {
+    @if ($margin-direction == "around") {
+        margin: $margin-size;
+    } @else if ($margin-direction == "horizontal") {
+        margin: 0 $margin-size 0 $margin-size;
+    } @else if ($margin-direction == "vertical") {
+        margin: $margin-size 0 $margin-size 0;
+    } @else {
+        margin-#{$margin-direction}: $margin-size;
+    }
+}

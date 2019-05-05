@@ -1,21 +1,34 @@
-@import "../components/manifest";
+@import "globals/manifest-globals";
+@import "statics/manifest-statics";
+@import "../components/manifest-components";
+@import "../forms/manifest-forms";
+@import "../pages/manifest-pages";
+@import "../layouts/manifest-layouts";
 
-p {
-  font-family: 'Roboto', sans-serif;
+body {
+    overflow-x: hidden;
+    margin: 0;
+    height: 100%;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    background: $color-primary-light;
+    @include breakpoint($bp-bleed) {
+        background: #fff;
+    }
 }
 
-h1 {
-  font-family: 'Roboto', sans-serif;
-}
+div.image-container--banner {
+    top: 80px;
+    background-image: url('https://ntnui.no/fotball/wp-content/uploads/sites/171/2018/10/b-laget.jpg');
 
-h2 {
-  font-family: 'Roboto', sans-serif;
-}
+    height: 760px;
 
-h3 {
-  font-family: 'Roboto', sans-serif;
-}
-
-li {
-  font-family: 'Roboto', sans-serif;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

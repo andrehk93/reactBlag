@@ -1,5 +1,0 @@
-@mixin padding($direction, $size) {
-  @if $direction == "horizontal" {
-    padding: 0 $size 0 $size;
-  }
-}

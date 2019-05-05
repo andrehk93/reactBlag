@@ -1,0 +1,8 @@
+@mixin border($border-direction, $border-size, $border-pattern, $border-color) {
+  @if $border-direction == "around" {
+    border: $border-size $border-pattern $border-color;
+  }
+  @else {
+    border-#{$border-direction}: $border-size $border-pattern $border-color;
+  }
+}

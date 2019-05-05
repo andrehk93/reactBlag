@@ -1,4 +1,25 @@
-.blag-button {
-  background: $blag-secondary--light !important;
-  @include border("around", 1px, solid, $black);
+button {
+    background: $color-primary;
+    border: 0;
+
+    // Base styling
+    @include padding("around", $blag-padding--small);
+    cursor: pointer;
+    border-radius: 2px;
+
+    // Text styling
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: $font-size;
+    font-weight: 600;
+
+    // Always 100% width
+    width: 100%;
+
+    &:active,
+    &:focus {
+        @include focus;
+    }
 }

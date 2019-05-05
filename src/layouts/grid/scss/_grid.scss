@@ -1,0 +1,56 @@
+div.grid {
+    width: 100%;
+    display: block;
+
+    > .grid-item {
+        width: 100%;
+        @include padding("around", $blag-padding--small);
+
+        > p {
+            margin-top: 0;
+        }
+    }
+
+    &[class*="grid-composition--"] {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        &.grid-composition--two-columns {
+            > .grid-item {
+                @include breakpoint($bp-s) {
+                    width: 100%;
+                }
+                @include breakpoint($bp-m-l) {
+                    width: 50%;
+                }
+            }
+        }
+        &.grid-composition--three-columns {
+            > .grid-item {
+                @include breakpoint($bp-s) {
+                    width: 100%;
+                }
+                @include breakpoint($bp-m) {
+                    width: 50%;
+                }
+                @include breakpoint($bp-l) {
+                    width: 33.333%;
+                }
+            }
+        }
+        &.grid-composition--four-columns {
+            > .grid-item {
+                @include breakpoint($bp-s) {
+                    width: 100%;
+                }
+                @include breakpoint($bp-m) {
+                    width: 50%;
+                }
+                @include breakpoint($bp-l) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+}

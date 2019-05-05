@@ -1,15 +1,24 @@
 import React from 'react';
 import classNames from "../../utils/ClassNames";
-import Button from "@material-ui/core/Button/Button";
 import PropTypes from 'prop-types';
 
-export class BlagButton extends React.Component {
+export class Button extends React.Component {
 
-    static displayName = "BlagButton";
+    static displayName = "Button";
+
+    static ButtonSkin = {
+        PRIMARY: 'primary',
+        SECONDARY: 'secondary',
+        TERTIARY: 'tertiary',
+    };
 
     static ClassNames = {
-        root: "blag-button",
-        composition: skin => "blag-button--skin-" + skin,
+        skin: skin => "button--skin-" + skin,
+    };
+
+    static propTypes = {
+        skin: PropTypes.oneOf(Object.values(Button.ButtonSkin)),
+        onClick: PropTypes.func
     };
 
     constructor(props) {
@@ -22,16 +31,12 @@ export class BlagButton extends React.Component {
     };
 
     render() {
-        const {composition, children} = this.props;
-        const classes = classNames([BlagButton.ClassNames.root, BlagButton.ClassNames.composition(composition)]);
+        const { skin, children } = this.props;
+        const classes = classNames([Button.ClassNames.skin(skin)]);
         return (
-            <Button className={classes} onClick={this.onClick}>
-                {children}
-            </Button>
+            <button className={classes} onClick={this.onClick}>
+                { children }
+            </button>
         );
     }
 }
-
-BlagButton.propTypes = {
-    onClick: PropTypes.object.isRequired
-};

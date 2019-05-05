@@ -1,31 +1,34 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './_manifest.scss';
-import GridLayout from "./layouts/grid/Grid";
+import Grid from "./layouts/grid/Grid";
 import PrimarySearchAppBar from "./components/menu/Menu";
 import { BrowserRouter, Route } from "react-router-dom";
-import {News} from "./components/news/News";
-import Site from "./components/site/Site";
-import Page from "./components/page/Page";
-import Stallen from "./components/stallen/Stallen";
-import Kamper from "./layouts/kamper/Kamper";
 
+import Page from "./layouts/page/Page";
+import Stallen from "./pages/stallen/Stallen";
+import Kamper from "./pages/kamper/Kamper";
+import News from "./pages/news/News";
+import Home from "./pages/home/Home";
+import { BannerImage } from "./components/bannerImage/BannerImage";
+
+// Should be state-free
 const App = () => {
     return (
-        <Site>
-            <GridLayout container={false} item={true}>
+        <div className="site">
+            <Grid>
                 <PrimarySearchAppBar/>
-            </GridLayout>
+                <BannerImage/>
+            </Grid>
             <Page>
-                <GridLayout container={true} item={true} direction={"column"} alignItems={"center"} xs={8} >
-                    <Route path="/nyheter" component={News} />
-                    <Route path="/kamper" component={Kamper} />
-                    <Route path="/sesong" component={News} />
-                    <Route path="/stallen" component={Stallen} />
-                    <Route path="/profil" component={News} />
-                </GridLayout>
+                <Route path="/nyheter" component={News} />
+                <Route path="/kamper" component={Kamper} />
+                <Route path="/sesong" component={News} />
+                <Route path="/stallen" component={Stallen} />
+                <Route path="/profil" component={News} />
+                <Home/>
             </Page>
-        </Site>
+        </div>
     );
 };
 
