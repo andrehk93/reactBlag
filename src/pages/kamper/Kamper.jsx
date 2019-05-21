@@ -5,6 +5,8 @@ import {PageContainer} from "../../layouts/page/PageContainer";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
 export default class Kamper extends React.Component {
+    static displayName = 'Kamper';
+
     constructor(props) {
         super(props);
         this.state = {

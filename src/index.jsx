@@ -11,6 +11,7 @@ import Kamper from "./pages/kamper/Kamper";
 import News from "./pages/news/News";
 import Home from "./pages/home/Home";
 import { BannerImage } from "./components/bannerImage/BannerImage";
+import Profile from "./pages/profile/Profile";
 
 // Should be state-free
 const App = () => {
@@ -25,8 +26,8 @@ const App = () => {
                 <Route path="/kamper" component={Kamper} />
                 <Route path="/sesong" component={News} />
                 <Route path="/stallen" component={Stallen} />
-                <Route path="/profil" component={News} />
-                <Home/>
+                <Route path="/profil" component={Profile} />
+                <Route path="/" component={Home} />
             </Page>
         </div>
     );

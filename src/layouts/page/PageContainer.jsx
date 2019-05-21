@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export const PageContainer = (props) => {
-
+    console.log('PROPS: ', props);
     return (
         <div className={"page-container"}>
             { props.children.map((child, i) => (
@@ -13,4 +13,6 @@ export const PageContainer = (props) => {
             ))}
         </div>
     )
-}
+};
+
+PageContainer.displayName = 'PageContainer';
